@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Notas</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Notas - Cadastro</h1>
+    </header>
+    <main>
+        <!-- Campos para cadastro de notas -->
+        <input type="text" id="nomeAluno" placeholder="Nome do aluno">
+        
+        <!-- Dropdown para escolher a turma/serie -->
+        <label for="turma">Escolha a Turma/Série:</label>
+        <select id="turma">
+            <option value="1">1ª Ano Ensino Médio</option>
+            <option value="2">2ª Ano Ensino Médio</option>
+            <option value="3">3ª Ano Ensino Médio</option>
+        </select>
+
+        <!-- Dropdown para escolher a matéria -->
+        <label for="materia">Escolha a Matéria:</label>
+        <select id="materia">
+            <option value="matematica">Matemática</option>
+            <option value="portugues">Português</option>
+            <option value="biologia">Biologia</option>
+            <option value="geografia">Geografia</option>
+            <option value="historia">História</option>
+            <option value="ingles">Inglês</option>
+            <option value="quimica">Química</option>
+            <option value="fisica">Física</option>
+            <option value="sociologia">Sociologia</option>
+            <option value="filosofia">Filosofia</option>
+            <option value="literatura">Literatura</option>
+            <option value="artes">Artes</option>
+        </select>
+
+        <input type="number" id="nota" placeholder="Nota">
+
+        <!-- Dropdown para escolher o trimestre -->
+        <label for="trimestre">Escolha o Trimestre:</label>
+        <select id="trimestre">
+            <option value="1">1° Trimestre</option>
+            <option value="2">2° Trimestre</option>
+            <option value="3">3° Trimestre</option>
+        </select>
+
+        <button class="btn-save" onclick="adicionarNota()">Adicionar Nota</button>
+        <button onclick="gerarRelatorio()">Gerar Relatório</button>
+
+        <!-- Tabela de notas -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Aluno</th>
+                    <th>Turma/Série</th>
+                    <th>Matéria</th>
+                    <th>Nota</th>
+                    <th>Trimestre</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaNotas">
+                <!-- Aqui serão inseridas as linhas da tabela dinamicamente -->
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p>&copy; 2023 Sistema de Notas, produzido por André Luís e Kyria - 2° A TDS</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
