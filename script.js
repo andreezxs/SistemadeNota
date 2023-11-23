@@ -3,6 +3,7 @@ const alunos = [];
 
 // Função para adicionar um aluno à lista e atualizar a tabela
 function adicionarNota() {
+    // Obtenha os valores dos campos
     const nomeAluno = document.getElementById('nomeAluno').value;
     const turma = document.getElementById('turma').value;
     const materia = document.getElementById('materia').value;
@@ -10,22 +11,26 @@ function adicionarNota() {
     const trimestre = document.getElementById('trimestre').value;
 
     if (nomeAluno && turma && materia && nota && trimestre) {
-        const novoAluno = { nomeAluno, turma, materia, nota, trimestre };
-        alunos.push(novoAluno);
-
+        // Crie uma nova linha na tabela
         const tabelaNotas = document.getElementById('tabelaNotas');
         const newRow = tabelaNotas.insertRow();
 
-        const keys = Object.keys(novoAluno);
+        // Adicione as células na linha
+        newRow.insertCell(0).innerHTML = nomeAluno;
+        newRow.insertCell(1).innerHTML = turma;
+        newRow.insertCell(2).innerHTML = materia;
+        newRow.insertCell(3).innerHTML = nota;
+        newRow.insertCell(4).innerHTML = trimestre;
 
-        keys.forEach((key, index) => {
-            const cell = newRow.insertCell(index);
-            cell.innerHTML = novoAluno[key];
-        });
-
-        const cellAcao = newRow.insertCell(keys.length);
+        // Adicione uma célula para a ação (botão Excluir)
+        const cellAcao = newRow.insertCell(5);
         cellAcao.innerHTML = '<button class="btn-delete" onclick="excluirAluno(this)">Excluir</button>';
 
+        // Adicione o aluno ao array
+        const novoAluno = { nomeAluno, turma, materia, nota, trimestre };
+        alunos.push(novoAluno);
+
+        // Limpe os campos de entrada
         limparCampos();
     }
 }
@@ -47,16 +52,20 @@ function gerarRelatorio() {
 
     let relatorioContent = '';
 
+    // Obtenha as chaves (nomes das colunas)
     const keys = Object.keys(alunos[0]);
     relatorioContent += keys.join(',') + '\n';
 
+    // Preencha o conteúdo do relatório com os dados dos alunos
     for (const aluno of alunos) {
         const values = keys.map(key => aluno[key]);
         relatorioContent += values.join(',') + '\n';
     }
 
+    // Crie um Blob com o conteúdo do relatório
     const blob = new Blob([relatorioContent], { type: 'text/csv;charset=utf-8;' });
 
+    // Crie um link para download e clique nele automaticamente
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     link.download = 'relatorio_notas.csv';
