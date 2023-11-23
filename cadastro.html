@@ -1,91 +1,75 @@
-/* Reset de estilos padrão do navegador */
-body, h1, h2, h3, p, ul, li {
-    margin: 0;
-    padding: 0;
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Notas</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Notas - Cadastro</h1>
+    </header>
+    <main>
+        <!-- Campos para cadastro de notas -->
+        <input type="text" id="nomeAluno" placeholder="Nome do aluno">
+        
+        <!-- Dropdown para escolher a turma/serie -->
+        <label for="turma">Escolha a Turma/Série:</label>
+        <select id="turma">
+            <option value="1">1ª Ano Ensino Médio</option>
+            <option value="2">2ª Ano Ensino Médio</option>
+            <option value="3">3ª Ano Ensino Médio</option>
+        </select>
 
-/* Estilizando o corpo da página */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f8f8;
-}
+        <!-- Dropdown para escolher a matéria -->
+        <label for="materia">Escolha a Matéria:</label>
+        <select id="materia">
+            <option value="Matematica">Matemática</option>
+            <option value="Portugues">Português</option>
+            <option value="Biologia">Biologia</option>
+            <option value="Geografia">Geografia</option>
+            <option value="Historia">História</option>
+            <option value="Ingles">Inglês</option>
+            <option value="Quimica">Química</option>
+            <option value="Fisica">Física</option>
+            <option value="Sociologia">Sociologia</option>
+            <option value="Filosofia">Filosofia</option>
+            <option value="Literatura">Literatura</option>
+            <option value="Artes">Artes</option>
+        </select>
 
-/* Estilizando o cabeçalho */
-header {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #2c3e50;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-}
+        <input type="number" id="nota" placeholder="Nota">
 
-h1 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 36px;
-}
+        <!-- Dropdown para escolher o trimestre -->
+        <label for="trimestre">Escolha o Trimestre:</label>
+        <select id="trimestre">
+            <option value="1">1° Trimestre</option>
+            <option value="2">2° Trimestre</option>
+            <option value="3">3° Trimestre</option>
+        </select>
 
-main {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 800px;
-}
+        <button class="btn-save" onclick="adicionarNota()">Adicionar Nota</button>
+        <button onclick="gerarRelatorio()">Gerar Relatório</button>
 
-/* Estilizando os campos de entrada e botões */
-input[type="text"],
-input[type="number"],
-select,
-button {
-    padding: 10px;
-    margin: 10px 0;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #2980b9;
-}
-
-table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-th, td {
-    border: 1px solid #ccc;
-    padding: 15px;
-    text-align: left;
-}
-
-th {
-    background-color: #2c3e50;
-    color: #fff;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-footer {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #2c3e50;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    position: relative; 
-    clear: both; 
-}
+        <!-- Tabela de notas -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Aluno</th>
+                    <th>Turma/Série</th>
+                    <th>Matéria</th>
+                    <th>Nota</th>
+                    <th>Trimestre</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaNotas">
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p>&copy; 2023 Sistema de Notas, produzido por André Luís e Kyria - 2° A TDS</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
